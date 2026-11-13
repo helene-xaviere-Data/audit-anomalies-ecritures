@@ -16,7 +16,7 @@ En audit, on ne peut pas contrôler les milliers d'écritures d'une entreprise u
 ## 🗺️ Étapes du projet
 
 - [x] 1. Génération d'un FEC réaliste (données simulées, avec anomalies cachées)
-- [ ] 2. Exploration des données (volumes, comptes, saisonnalité)
+- [x] 2. Exploration des données (volumes, comptes, saisonnalité) → [notebook](notebooks/01_exploration.ipynb)
 - [ ] 3. Tests d'audit : week-ends, montants ronds, doublons, déséquilibres, écritures de clôture
 - [ ] 4. Loi de Benford
 - [ ] 5. Score de risque par machine learning (Isolation Forest)
@@ -26,13 +26,14 @@ En audit, on ne peut pas contrôler les milliers d'écritures d'une entreprise u
 
 Les données sont **simulées** (aucune donnée réelle d'entreprise), mais respectent le format officiel du **FEC** exigé par l'administration fiscale française (18 colonnes, séparateur tabulation, article A47 A-1 du LPF).
 
-**Entreprise fictive** : *Atelier Lumière SAS*, distributeur de luminaires, 12 salariés, exercice 2025.
+**Entreprise fictive** : *Atelier Lumière SAS*, distributeur de luminaires, 18 salariés, exercice 2025.
 
 | Indicateur | Valeur |
 |---|---|
 | Lignes d'écritures | ≈ 17 000 |
 | Écritures | ≈ 6 650 |
 | Chiffre d'affaires HT | ≈ 3,45 M€ |
+| Marge brute / résultat avant impôt | ≈ 43 % / ≈ 6 % du CA |
 | Journaux | Ventes, Achats, Banque, Paie, OD, À-nouveaux |
 | Clients / fournisseurs | 40 / 26 |
 
@@ -60,6 +61,24 @@ Pour régénérer les données (résultat identique à chaque exécution) :
 ```bash
 python src/generer_fec.py
 ```
+
+## 🔎 Étape 2 : ce que révèle l'exploration
+
+[Voir le notebook complet](notebooks/01_exploration.ipynb)
+
+Avant tout test automatisé, une exploration bien menée fait déjà ressortir plusieurs zones de risque :
+
+| Constat | Risque d'audit |
+|---|---|
+| 4 écritures déséquilibrées, avec des écarts tous **multiples de 9** | Inversions de chiffres à la saisie et contrôle logiciel défaillant |
+| 15 écritures datées d'un **samedi ou d'un dimanche** | Saisie hors des circuits de contrôle |
+| Les plus grosses factures impayées datent des **3 derniers jours de l'année**, avec des montants ronds, et ont été **validées en janvier** | Chiffre d'affaires fictif (*cut-off*) |
+| Un fournisseur apparu en juin, **payé en 6 jours** contre 40 en moyenne, avec des factures proches de **5 000 € HT** | Fournisseur fictif, contournement du seuil d'approbation |
+
+<p align="center">
+  <img src="reports/figures/03_ecritures_par_jour.png" width="48%">
+  <img src="reports/figures/02_ca_mensuel.png" width="48%">
+</p>
 
 ## 🛠️ Outils
 

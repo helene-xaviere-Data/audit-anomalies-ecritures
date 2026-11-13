@@ -272,7 +272,7 @@ def creer_achats() -> list[tuple]:
     for _ in range(900):
         f = FOURNISSEURS_MARCHANDISES[rng.integers(len(FOURNISSEURS_MARCHANDISES))]
         d = jour_ouvre_aleatoire()
-        ht = montant_aleatoire(950, 1.0, 20, 30_000)
+        ht = montant_aleatoire(1_300, 1.0, 20, 30_000)
         facture, reglement = creer_achat(f, "607000", d, ht)
         achats_marchandises.append((f, d, ht, facture.piece_ref, facture))
     for _ in range(150):
@@ -293,8 +293,8 @@ def creer_achats() -> list[tuple]:
 
 
 def creer_paie() -> None:
-    """Paie mensuelle de 12 salariés : charges, net à payer, cotisations sociales."""
-    salaires_bruts = rng.uniform(1_900, 3_800, size=12).round(-1)
+    """Paie mensuelle de 18 salariés : charges, net à payer, cotisations sociales."""
+    salaires_bruts = rng.uniform(1_900, 3_800, size=18).round(-1)
     for mois in range(1, 13):
         brut = float(salaires_bruts.sum()) * (2 if mois == 12 else 1)  # 13e mois en décembre
         cotis_salariales = round(brut * 0.22, 2)
@@ -338,9 +338,9 @@ def creer_declarations_tva() -> None:
 def creer_operations_diverses() -> None:
     """À-nouveaux, frais bancaires, remboursement d'emprunt, amortissements."""
     ajouter(Ecriture("AN", EXERCICE_DEBUT, "AN-2025", "Reprise des soldes au 01/01/2025", [
-        ligne("218300", debit=60_000), ligne("370000", debit=45_000), ligne("512000", debit=85_000),
+        ligne("218300", debit=60_000), ligne("370000", debit=45_000), ligne("512000", debit=350_000),
         ligne("281830", credit=24_000), ligne("101000", credit=50_000),
-        ligne("164000", credit=70_000), ligne("110000", credit=46_000),
+        ligne("164000", credit=70_000), ligne("110000", credit=311_000),
     ]))
     for mois in range(1, 13):
         d = dernier_jour_ouvre(mois)
