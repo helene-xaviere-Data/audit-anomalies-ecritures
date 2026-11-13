@@ -1,0 +1,25 @@
+﻿CompteNum;CompteLib;Racine2;Classe
+101000;Capital;10;1 - Capitaux
+110000;Report à nouveau;11;1 - Capitaux
+164000;Emprunts auprès des établissements de crédit;16;1 - Capitaux
+218300;Matériel de bureau et informatique;21;2 - Immobilisations
+281830;Amortissements du matériel de bureau;28;2 - Immobilisations
+370000;Stocks de marchandises;37;3 - Stocks
+401000;Fournisseurs;40;4 - Tiers
+411000;Clients;41;4 - Tiers
+421000;Personnel - rémunérations dues;42;4 - Tiers
+431000;Sécurité sociale;43;4 - Tiers
+445660;TVA déductible sur autres biens et services;44;4 - Tiers
+445710;TVA collectée;44;4 - Tiers
+512000;Banque;51;5 - Trésorerie
+606100;Fournitures non stockables;60;6 - Charges
+607000;Achats de marchandises;60;6 - Charges
+613200;Locations immobilières;61;6 - Charges
+622600;Honoraires;62;6 - Charges
+625100;Voyages et déplacements;62;6 - Charges
+626000;Frais postaux et de télécommunications;62;6 - Charges
+627000;Services bancaires;62;6 - Charges
+641000;Rémunérations du personnel;64;6 - Charges
+645000;Charges de sécurité sociale;64;6 - Charges
+681120;Dotations aux amortissements;68;6 - Charges
+707000;Ventes de marchandises;70;7 - Produits

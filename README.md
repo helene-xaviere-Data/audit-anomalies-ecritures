@@ -20,7 +20,7 @@ En audit, on ne peut pas contrôler les milliers d'écritures d'une entreprise u
 - [x] 3. Tests d'audit : week-ends, montants ronds, doublons, déséquilibres, écritures de clôture → [notebook](notebooks/02_tests_audit.ipynb)
 - [x] 4. Loi de Benford → [notebook](notebooks/03_benford.ipynb)
 - [x] 5. Score de risque par machine learning (Isolation Forest) → [notebook](notebooks/04_machine_learning.ipynb)
-- [ ] 6. Restitution : application interactive et/ou rapport Power BI
+- [ ] 6. Restitution : rapport Power BI → [données et guide](powerbi/) *(en cours)*
 
 ## 📊 Les données
 
@@ -141,9 +141,13 @@ Un **Isolation Forest** attribue un score d'anomalie à chaque écriture, à par
 
 **Conclusion :** les règles sont imbattables sur les fraudes connues. Le modèle sert de **filet de sécurité** pour l'atypique que personne n'a pensé à coder.
 
+## 📊 Étape 6 : rapport Power BI *(en cours)*
+
+Les résultats sont exportés en **modèle en étoile** par [`src/export_powerbi.py`](src/export_powerbi.py) : une table de faits (lignes du FEC), une table des écritures avec les alertes et le score du modèle, une table de pont pour les tests, les dimensions comptes, tiers, journaux et calendrier, et les tables Benford. Le [guide de construction](powerbi/GUIDE_POWERBI.md) décrit le rapport de 5 pages : vue d'ensemble, alertes d'audit, loi de Benford, fiche écriture en extraction (drill-through) et méthodologie. Les [mesures DAX](powerbi/mesures.dax) et le [thème](powerbi/theme_audit.json) sont fournis.
+
 ## 🛠️ Outils
 
-Python · pandas · NumPy · SciPy · Matplotlib · seaborn · scikit-learn · Jupyter
+Python · pandas · NumPy · SciPy · Matplotlib · seaborn · scikit-learn · Jupyter · Power BI (DAX, Power Query)
 
 ## 📁 Structure
 
@@ -154,6 +158,7 @@ audit-anomalies-ecritures/
 │   └── processed/    # données nettoyées / enrichies
 ├── notebooks/        # analyses pas à pas
 ├── src/              # scripts Python réutilisables
+├── powerbi/          # données du modèle en étoile, mesures DAX, thème, guide
 ├── reports/figures/  # graphiques exportés
 └── requirements.txt  # bibliothèques nécessaires
 ```

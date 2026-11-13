@@ -1,0 +1,87 @@
+// ============================================================================
+// Mesures DAX du rapport « Audit des écritures comptables »
+// À créer dans une table vide nommée « Mesures » (Accueil > Entrer des données > Charger)
+// Copier-coller chaque mesure via : Modélisation > Nouvelle mesure
+// ============================================================================
+
+// ---------- Volumes -----------------------------------------------------------
+Nb écritures = COUNTROWS ( Ecritures )
+
+Montant écritures = SUM ( Ecritures[Montant] )
+
+Nb alertes = COUNTROWS ( Alertes )
+
+// ---------- Alertes d'audit ---------------------------------------------------
+Écritures signalées =
+CALCULATE ( [Nb écritures], Ecritures[NbAlertes] > 0 )
+
+% écritures signalées =
+DIVIDE ( [Écritures signalées], [Nb écritures] )
+// Format : Pourcentage, 1 décimale
+
+Montant signalé =
+CALCULATE ( [Montant écritures], Ecritures[NbAlertes] > 0 )
+
+Écritures risque élevé =
+CALCULATE ( [Nb écritures], Ecritures[NiveauRisque] = "1 - Élevé" )
+
+Score moyen =
+AVERAGE ( Ecritures[ScoreAnomalie] )
+
+// ---------- Indicateurs financiers -------------------------------------------
+Chiffre d'affaires HT =
+- CALCULATE ( SUM ( Faits_Lignes[Montant] ), Comptes[Racine2] = "70" )
+
+Charges =
+CALCULATE ( SUM ( Faits_Lignes[Montant] ), Comptes[Classe] = "6 - Charges" )
+
+Résultat avant impôt =
+[Chiffre d'affaires HT] - [Charges]
+
+Taux de résultat =
+DIVIDE ( [Résultat avant impôt], [Chiffre d'affaires HT] )
+// Format : Pourcentage, 1 décimale
+
+// ---------- Évaluation (page Méthodologie) -----------------------------------
+Anomalies injectées =
+CALCULATE ( [Nb écritures], Ecritures[AnomalieInjectee] = TRUE () )
+
+Anomalies détectées par les règles =
+CALCULATE (
+    [Nb écritures],
+    Ecritures[AnomalieInjectee] = TRUE (),
+    Ecritures[NbAlertes] > 0
+)
+
+Rappel des règles =
+DIVIDE ( [Anomalies détectées par les règles], [Anomalies injectées] )
+// Format : Pourcentage, 0 décimale
+
+Précision des règles =
+DIVIDE ( [Anomalies détectées par les règles], [Écritures signalées] )
+// Format : Pourcentage, 0 décimale
+
+Anomalies dans le top 200 du modèle =
+CALCULATE (
+    [Nb écritures],
+    Ecritures[AnomalieInjectee] = TRUE (),
+    Ecritures[RangScore] <= 200
+)
+
+Rappel du modèle (top 200) =
+DIVIDE ( [Anomalies dans le top 200 du modèle], [Anomalies injectées] )
+// Format : Pourcentage, 0 décimale
+
+// ---------- Loi de Benford ----------------------------------------------------
+Part observée = SUM ( Benford_Distribution[PartObservee] )
+// Format : Pourcentage, 1 décimale
+
+Part attendue (Benford) = SUM ( Benford_Distribution[PartAttendue] )
+// Format : Pourcentage, 1 décimale
+
+MAD du segment =
+AVERAGEX (
+    VALUES ( Benford_Distribution[Chiffre] ),
+    ABS ( [Part observée] - [Part attendue (Benford)] )
+)
+// Format : Nombre décimal, 4 décimales

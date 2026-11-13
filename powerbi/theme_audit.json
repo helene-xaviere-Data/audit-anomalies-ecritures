@@ -1,0 +1,13 @@
+{
+  "name": "Audit Anomalies",
+  "dataColors": ["#1F4E79", "#4C72B0", "#C44E52", "#DD8452", "#55A868", "#8172B3", "#937860", "#64B5CD"],
+  "background": "#FFFFFF",
+  "foreground": "#1F2937",
+  "tableAccent": "#1F4E79",
+  "good": "#55A868",
+  "neutral": "#DD8452",
+  "bad": "#C44E52",
+  "maximum": "#C44E52",
+  "center": "#F2C14E",
+  "minimum": "#F7F7F7"
+}

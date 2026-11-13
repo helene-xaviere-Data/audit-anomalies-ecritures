@@ -1,0 +1,129 @@
+﻿EcritureNum;CodeTest;Test
+OD000004;desequilibre;Écriture déséquilibrée
+OD000008;desequilibre;Écriture déséquilibrée
+OD000012;desequilibre;Écriture déséquilibrée
+OD000014;desequilibre;Écriture déséquilibrée
+AC000434;jour_non_ouvre;Saisie un week-end ou un jour férié
+AC000820;jour_non_ouvre;Saisie un week-end ou un jour férié
+AC000935;jour_non_ouvre;Saisie un week-end ou un jour férié
+AC001057;jour_non_ouvre;Saisie un week-end ou un jour férié
+AC001058;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE000526;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE000575;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE000680;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE001120;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE001232;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE001317;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE001373;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE001679;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE001770;jour_non_ouvre;Saisie un week-end ou un jour férié
+VE002231;jour_non_ouvre;Saisie un week-end ou un jour férié
+OD000001;montant_rond;Montant rond (multiple de 500 €)
+OD000002;montant_rond;Montant rond (multiple de 500 €)
+OD000003;montant_rond;Montant rond (multiple de 500 €)
+OD000005;montant_rond;Montant rond (multiple de 500 €)
+OD000006;montant_rond;Montant rond (multiple de 500 €)
+OD000007;montant_rond;Montant rond (multiple de 500 €)
+OD000009;montant_rond;Montant rond (multiple de 500 €)
+OD000010;montant_rond;Montant rond (multiple de 500 €)
+OD000011;montant_rond;Montant rond (multiple de 500 €)
+OD000013;montant_rond;Montant rond (multiple de 500 €)
+OD000015;montant_rond;Montant rond (multiple de 500 €)
+OD000016;montant_rond;Montant rond (multiple de 500 €)
+OD000017;montant_rond;Montant rond (multiple de 500 €)
+VE002407;montant_rond;Montant rond (multiple de 500 €)
+AC000349;doublon;Facture fournisseur en double
+AC000355;doublon;Facture fournisseur en double
+AC000394;doublon;Facture fournisseur en double
+AC000476;doublon;Facture fournisseur en double
+AC000502;doublon;Facture fournisseur en double
+AC000633;doublon;Facture fournisseur en double
+AC000777;doublon;Facture fournisseur en double
+AC000910;doublon;Facture fournisseur en double
+AC001007;doublon;Facture fournisseur en double
+AC001036;doublon;Facture fournisseur en double
+AC001067;doublon;Facture fournisseur en double
+AC001096;doublon;Facture fournisseur en double
+AC001197;fin_exercice;Écriture importante en fin d'exercice
+AC001198;fin_exercice;Écriture importante en fin d'exercice
+VE002373;fin_exercice;Écriture importante en fin d'exercice
+VE002374;fin_exercice;Écriture importante en fin d'exercice
+VE002375;fin_exercice;Écriture importante en fin d'exercice
+VE002376;fin_exercice;Écriture importante en fin d'exercice
+VE002387;fin_exercice;Écriture importante en fin d'exercice
+VE002388;fin_exercice;Écriture importante en fin d'exercice
+VE002401;fin_exercice;Écriture importante en fin d'exercice
+VE002407;fin_exercice;Écriture importante en fin d'exercice
+VE002408;fin_exercice;Écriture importante en fin d'exercice
+VE002409;fin_exercice;Écriture importante en fin d'exercice
+VE002410;fin_exercice;Écriture importante en fin d'exercice
+AC000416;validation_tardive;Validation plus de 10 jours après la date
+AC000520;validation_tardive;Validation plus de 10 jours après la date
+AC000584;validation_tardive;Validation plus de 10 jours après la date
+AC000661;validation_tardive;Validation plus de 10 jours après la date
+AC000736;validation_tardive;Validation plus de 10 jours après la date
+AC000742;validation_tardive;Validation plus de 10 jours après la date
+AC000794;validation_tardive;Validation plus de 10 jours après la date
+AC000860;validation_tardive;Validation plus de 10 jours après la date
+OD000017;validation_tardive;Validation plus de 10 jours après la date
+VE002373;validation_tardive;Validation plus de 10 jours après la date
+VE002374;validation_tardive;Validation plus de 10 jours après la date
+VE002375;validation_tardive;Validation plus de 10 jours après la date
+VE002376;validation_tardive;Validation plus de 10 jours après la date
+VE002387;validation_tardive;Validation plus de 10 jours après la date
+VE002388;validation_tardive;Validation plus de 10 jours après la date
+VE002407;validation_tardive;Validation plus de 10 jours après la date
+VE002408;validation_tardive;Validation plus de 10 jours après la date
+VE002409;validation_tardive;Validation plus de 10 jours après la date
+VE002410;validation_tardive;Validation plus de 10 jours après la date
+AC000035;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000417;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000551;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000608;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000645;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000646;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000769;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000770;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000844;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000865;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000866;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000879;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000986;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC001000;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC001014;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC001015;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC001037;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC001038;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC001074;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC001099;sous_seuil;Factures répétées juste sous le seuil d'approbation
+AC000416;schema_rare;Combinaison de comptes inhabituelle
+AC000520;schema_rare;Combinaison de comptes inhabituelle
+AC000584;schema_rare;Combinaison de comptes inhabituelle
+AC000661;schema_rare;Combinaison de comptes inhabituelle
+AC000736;schema_rare;Combinaison de comptes inhabituelle
+AC000742;schema_rare;Combinaison de comptes inhabituelle
+AC000794;schema_rare;Combinaison de comptes inhabituelle
+AC000860;schema_rare;Combinaison de comptes inhabituelle
+BQ000003;schema_rare;Combinaison de comptes inhabituelle
+BQ000023;schema_rare;Combinaison de comptes inhabituelle
+BQ000432;schema_rare;Combinaison de comptes inhabituelle
+BQ002342;schema_rare;Combinaison de comptes inhabituelle
+BQ002392;schema_rare;Combinaison de comptes inhabituelle
+BQ002955;schema_rare;Combinaison de comptes inhabituelle
+OD000001;schema_rare;Combinaison de comptes inhabituelle
+OD000002;schema_rare;Combinaison de comptes inhabituelle
+OD000003;schema_rare;Combinaison de comptes inhabituelle
+OD000004;schema_rare;Combinaison de comptes inhabituelle
+OD000005;schema_rare;Combinaison de comptes inhabituelle
+OD000006;schema_rare;Combinaison de comptes inhabituelle
+OD000007;schema_rare;Combinaison de comptes inhabituelle
+OD000008;schema_rare;Combinaison de comptes inhabituelle
+OD000009;schema_rare;Combinaison de comptes inhabituelle
+OD000010;schema_rare;Combinaison de comptes inhabituelle
+OD000011;schema_rare;Combinaison de comptes inhabituelle
+OD000012;schema_rare;Combinaison de comptes inhabituelle
+OD000013;schema_rare;Combinaison de comptes inhabituelle
+OD000014;schema_rare;Combinaison de comptes inhabituelle
+OD000015;schema_rare;Combinaison de comptes inhabituelle
+OD000016;schema_rare;Combinaison de comptes inhabituelle
+OD000017;schema_rare;Combinaison de comptes inhabituelle

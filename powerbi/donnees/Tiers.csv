@@ -1,0 +1,68 @@
+﻿TiersCode;Tiers;TypeTiers
+C0008;Boutique Bellevue;Client
+C0002;Boutique Montmartre;Client
+C0019;Café du Port;Client
+C0001;Galerie Garonne;Client
+C0012;Boutique Riviera;Client
+C0018;Galerie Horizon;Client
+C0035;Maison des Arts;Client
+C0003;Agence Confluence;Client
+C0040;Galerie Vauban;Client
+C0027;Maison Riviera;Client
+C0005;Studio Bellevue;Client
+C0015;Galerie Riviera;Client
+C0014;Maison Montmartre;Client
+C0016;Boutique Confluence;Client
+C0006;Agence du Port;Client
+C0009;Studio du Port;Client
+C0021;Agence des Arts;Client
+C0007;Galerie Confluence;Client
+C0011;Studio des Arts;Client
+C0031;Galerie Opale;Client
+C0024;Agence Bellevue;Client
+C0039;Studio Belle Époque;Client
+C0022;Café Belle Époque;Client
+C0036;Café Montmartre;Client
+C0032;Restaurant Riviera;Client
+C0010;Café Chartrons;Client
+C0026;Agence Montmartre;Client
+C0004;Hôtel des Arts;Client
+C0013;Restaurant Chartrons;Client
+C0033;Restaurant des Arts;Client
+C0017;Hôtel Bellevue;Client
+C0030;Hôtel Belle Époque;Client
+C0037;Maison Bellevue;Client
+C0034;Maison Chartrons;Client
+C0029;Maison Croix-Rousse;Client
+C0025;Maison Saint-Michel;Client
+C0023;Restaurant Opale;Client
+C0038;Restaurant Confluence;Client
+C0020;Agence Riviera;Client
+C0028;Café Saint-Michel;Client
+F0015;Comptoir Métal Design;Fournisseur
+F0012;Import Verre & Laiton;Fournisseur
+F0018;Comptoir Éclat;Fournisseur
+F0022;SCI Les Tilleuls;Fournisseur
+F0001;Fabrique Atlas;Fournisseur
+F0017;Fabrique Éclat;Fournisseur
+F0011;Grossiste Atlas;Fournisseur
+F0010;Distribution Atlas;Fournisseur
+F0020;Papeterie Centrale;Fournisseur
+F0008;Import Nordlicht;Fournisseur
+F0004;Manufacture Lumen;Fournisseur
+F0016;Grossiste Nordlicht;Fournisseur
+F0003;Comptoir Atlas;Fournisseur
+F0002;Import Éclat;Fournisseur
+F0014;Comptoir Lumen;Fournisseur
+F0024;Voyages Affaires Express;Fournisseur
+F0025;Hôtels Étape Business;Fournisseur
+F0009;Manufacture Céramique du Sud;Fournisseur
+F0019;Bureau Plus Fournitures;Fournisseur
+F0007;Distribution Nordlicht;Fournisseur
+F0006;Fabrique Lumen;Fournisseur
+F0005;Manufacture Atlas;Fournisseur
+F0013;Comptoir Céramique du Sud;Fournisseur
+F0021;TéléCom Pro Services;Fournisseur
+F0023;Cabinet Expertise Comptable Martin;Fournisseur
+F0099;Conseil Stratégie Plus;Fournisseur
+AUCUN;(sans tiers);(sans tiers)
