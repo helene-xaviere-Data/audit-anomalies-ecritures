@@ -18,7 +18,7 @@ En audit, on ne peut pas contrôler les milliers d'écritures d'une entreprise u
 - [x] 1. Génération d'un FEC réaliste (données simulées, avec anomalies cachées)
 - [x] 2. Exploration des données (volumes, comptes, saisonnalité) → [notebook](notebooks/01_exploration.ipynb)
 - [x] 3. Tests d'audit : week-ends, montants ronds, doublons, déséquilibres, écritures de clôture → [notebook](notebooks/02_tests_audit.ipynb)
-- [ ] 4. Loi de Benford
+- [x] 4. Loi de Benford → [notebook](notebooks/03_benford.ipynb)
 - [ ] 5. Score de risque par machine learning (Isolation Forest)
 - [ ] 6. Restitution : application interactive et/ou rapport Power BI
 
@@ -103,9 +103,24 @@ Avant tout test automatisé, une exploration bien menée fait déjà ressortir p
 
 ⚠️ **Limite assumée :** ces règles ont été conçues en connaissant les schémas injectés. Sur un vrai FEC, la précision serait plus faible, et un fraudeur averti peut éviter des règles connues. D'où les étapes suivantes : la loi de Benford et le machine learning non supervisé, qui ne partent pas d'une liste de fraudes connues.
 
+## 🔢 Étape 4 : loi de Benford
+
+[Voir le notebook complet](notebooks/03_benford.ipynb) · [Code](src/benford.py)
+
+Le test des premiers chiffres ne part d'**aucune hypothèse sur la fraude**. Il utilise les indicateurs de référence en audit : MAD avec les seuils de Nigrini, khi-deux et test z.
+
+- **Globalement**, le FEC est conforme à Benford (MAD = 0,0022) : 81 anomalies sur 17 000 montants ne déforment pas la distribution.
+- **Le test des deux premiers chiffres** fait ressortir un pic sur « 57 » (z = 3,9). En creusant, un fournisseur y apparaît **40 fois plus que prévu** : c'est le fournisseur fictif.
+- **Par fournisseur**, ses factures commencent toutes par 4 (p = 10⁻²⁴), alors qu'un fournisseur réel suit la courbe. Le loyer fixe s'écarte aussi de Benford, mais c'est une fausse alerte attendue : le jugement professionnel reste indispensable.
+- **Les montants ronds** concentrent les alertes dans le journal des OD : 76 % de multiples de 100 €.
+
+<p align="center"><img src="reports/figures/11_benford_par_fournisseur.png" width="90%"></p>
+
+**Bilan :** Benford repère les montants **inventés ou répétitifs** (fractionnement, montants ronds), mais reste aveugle aux doublons, aux dates et aux schémas comptables. C'est donc un complément des tests d'audit, pas un remplaçant.
+
 ## 🛠️ Outils
 
-Python · pandas · NumPy · Matplotlib · scikit-learn · Jupyter
+Python · pandas · NumPy · SciPy · Matplotlib · seaborn · scikit-learn · Jupyter
 
 ## 📁 Structure
 
