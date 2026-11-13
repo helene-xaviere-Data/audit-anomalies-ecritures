@@ -19,7 +19,7 @@ En audit, on ne peut pas contrôler les milliers d'écritures d'une entreprise u
 - [x] 2. Exploration des données (volumes, comptes, saisonnalité) → [notebook](notebooks/01_exploration.ipynb)
 - [x] 3. Tests d'audit : week-ends, montants ronds, doublons, déséquilibres, écritures de clôture → [notebook](notebooks/02_tests_audit.ipynb)
 - [x] 4. Loi de Benford → [notebook](notebooks/03_benford.ipynb)
-- [ ] 5. Score de risque par machine learning (Isolation Forest)
+- [x] 5. Score de risque par machine learning (Isolation Forest) → [notebook](notebooks/04_machine_learning.ipynb)
 - [ ] 6. Restitution : application interactive et/ou rapport Power BI
 
 ## 📊 Les données
@@ -117,6 +117,29 @@ Le test des premiers chiffres ne part d'**aucune hypothèse sur la fraude**. Il 
 <p align="center"><img src="reports/figures/11_benford_par_fournisseur.png" width="90%"></p>
 
 **Bilan :** Benford repère les montants **inventés ou répétitifs** (fractionnement, montants ronds), mais reste aveugle aux doublons, aux dates et aux schémas comptables. C'est donc un complément des tests d'audit, pas un remplaçant.
+
+## 🤖 Étape 5 : machine learning non supervisé
+
+[Voir le notebook complet](notebooks/04_machine_learning.ipynb) · [Code](src/modele_anomalies.py)
+
+Un **Isolation Forest** attribue un score d'anomalie à chaque écriture, à partir de 16 variables métier (montant, calendrier, délai de validation, rareté du schéma comptable, comportement du tiers…). Il ne dispose **ni de règles, ni de la correction**, et n'a pas été réglé en regardant les étiquettes.
+
+| Écritures examinées (par score décroissant) | 25 | 91 | 200 | 500 |
+|---|---|---|---|---|
+| Anomalies trouvées | 23 | 37 | 53 | 71 |
+| Précision | 92 % | 41 % | 26 % | 14 % |
+| Rappel | 28 % | 46 % | 65 % | 88 % |
+
+- **Average precision de 47 %, contre 1,2 % pour un échantillonnage au hasard (× 39)**, stable selon la graine aléatoire (45 à 49 %).
+- **Atypique ≠ frauduleux** : sans précaution, le modèle classe d'abord… les loyers. Il a fallu mettre de côté les écritures récurrentes connues, comme le ferait un auditeur.
+- **Points forts** : montants ronds, fractionnement, déséquilibres, validations tardives (100 % dans le top 200). **Angles morts** : anomalies portant sur un seul détail, comme un doublon ou une saisie le samedi.
+
+<p align="center">
+  <img src="reports/figures/12_courbe_rappel_ml.png" width="49%">
+  <img src="reports/figures/13_rappel_ml_par_type.png" width="49%">
+</p>
+
+**Conclusion :** les règles sont imbattables sur les fraudes connues. Le modèle sert de **filet de sécurité** pour l'atypique que personne n'a pensé à coder.
 
 ## 🛠️ Outils
 
