@@ -15,12 +15,51 @@ En audit, on ne peut pas contrôler les milliers d'écritures d'une entreprise u
 
 ## 🗺️ Étapes du projet
 
-- [ ] 1. Génération d'un FEC réaliste (données simulées, avec anomalies cachées)
+- [x] 1. Génération d'un FEC réaliste (données simulées, avec anomalies cachées)
 - [ ] 2. Exploration des données (volumes, comptes, saisonnalité)
 - [ ] 3. Tests d'audit : week-ends, montants ronds, doublons, déséquilibres, écritures de clôture
 - [ ] 4. Loi de Benford
 - [ ] 5. Score de risque par machine learning (Isolation Forest)
 - [ ] 6. Restitution : application interactive et/ou rapport Power BI
+
+## 📊 Les données
+
+Les données sont **simulées** (aucune donnée réelle d'entreprise), mais respectent le format officiel du **FEC** exigé par l'administration fiscale française (18 colonnes, séparateur tabulation, article A47 A-1 du LPF).
+
+**Entreprise fictive** : *Atelier Lumière SAS*, distributeur de luminaires, 12 salariés, exercice 2025.
+
+| Indicateur | Valeur |
+|---|---|
+| Lignes d'écritures | ≈ 17 000 |
+| Écritures | ≈ 6 650 |
+| Chiffre d'affaires HT | ≈ 3,45 M€ |
+| Journaux | Ventes, Achats, Banque, Paie, OD, À-nouveaux |
+| Clients / fournisseurs | 40 / 26 |
+
+Le flux est complet et cohérent : factures, règlements avec lettrage, paie mensuelle, TVA, emprunt, amortissements, saisonnalité (pic en fin d'année, creux en août). Les montants suivent naturellement la **loi de Benford**.
+
+### Les anomalies cachées
+
+**81 écritures anormales** ont été glissées parmi les ≈ 6 650 écritures (≈ 1,2 %). Elles reprennent des schémas de fraude et d'erreur classiques en audit :
+
+| Anomalie | Nb | Ce que cela simule |
+|---|---|---|
+| Saisie le week-end | 15 | Écritures passées hors des heures habituelles |
+| Fractionnement sous le seuil | 14 | Fournisseur fictif qui facture juste sous le seuil d'approbation de 5 000 € |
+| Doublon | 12 | Même facture fournisseur saisie et payée deux fois |
+| Montant rond | 12 | Sorties de banque rondes, au libellé vague (« Divers », « Ajustement »…) |
+| Vente fictive en clôture | 10 | Chiffre d'affaires gonflé les derniers jours de l'exercice, jamais encaissé |
+| Validation tardive | 8 | Avoirs antidatés, validés plusieurs mois après leur date |
+| Contrepartie inhabituelle | 6 | Salaires payés directement par la banque, hors paie |
+| Déséquilibre | 4 | Débit ≠ crédit (chiffres inversés à la saisie) |
+
+La liste de ces anomalies (`anomalies_injectees.csv`) n'est **pas utilisée pour les détecter**. Elle sert uniquement à **mesurer l'efficacité** des tests d'audit, comme une correction d'examen.
+
+Pour régénérer les données (résultat identique à chaque exécution) :
+
+```bash
+python src/generer_fec.py
+```
 
 ## 🛠️ Outils
 
