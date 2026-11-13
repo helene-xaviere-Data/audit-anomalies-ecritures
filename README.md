@@ -17,7 +17,7 @@ En audit, on ne peut pas contrôler les milliers d'écritures d'une entreprise u
 
 - [x] 1. Génération d'un FEC réaliste (données simulées, avec anomalies cachées)
 - [x] 2. Exploration des données (volumes, comptes, saisonnalité) → [notebook](notebooks/01_exploration.ipynb)
-- [ ] 3. Tests d'audit : week-ends, montants ronds, doublons, déséquilibres, écritures de clôture
+- [x] 3. Tests d'audit : week-ends, montants ronds, doublons, déséquilibres, écritures de clôture → [notebook](notebooks/02_tests_audit.ipynb)
 - [ ] 4. Loi de Benford
 - [ ] 5. Score de risque par machine learning (Isolation Forest)
 - [ ] 6. Restitution : application interactive et/ou rapport Power BI
@@ -79,6 +79,29 @@ Avant tout test automatisé, une exploration bien menée fait déjà ressortir p
   <img src="reports/figures/03_ecritures_par_jour.png" width="48%">
   <img src="reports/figures/02_ca_mensuel.png" width="48%">
 </p>
+
+## 🧪 Étape 3 : tests d'audit sur 100 % des écritures
+
+[Voir le notebook complet](notebooks/02_tests_audit.ipynb) · [Code des tests](src/tests_audit.py)
+
+8 tests de *journal entry testing* (ISA / NEP 240), chacun codé comme une fonction documentée et paramétrable :
+
+| Test | Signalées | Précision |
+|---|---|---|
+| Écriture déséquilibrée | 4 | 100 % |
+| Saisie un week-end ou un jour férié | 15 | 100 % |
+| Montant rond (multiple de 500 €) | 14 | 93 % |
+| Facture fournisseur en double | 12 | 100 % |
+| Écriture importante en fin d'exercice | 13 | 77 % |
+| Validation plus de 10 jours après la date | 19 | 95 % |
+| Factures répétées juste sous le seuil d'approbation | 20 | 70 % |
+| Combinaison de comptes inhabituelle | 31 | 97 % |
+
+**Résultat :** sur 6 655 écritures, **91 sont signalées (1,4 %)**. Elles contiennent **les 81 anomalies cachées (rappel de 100 %)**, avec une **précision de 89 %**. Les 10 fausses alertes sont toutes explicables (dotation aux amortissements, grosses opérations légitimes de fin décembre…).
+
+<p align="center"><img src="reports/figures/08_matrice_tests_anomalies.png" width="80%"></p>
+
+⚠️ **Limite assumée :** ces règles ont été conçues en connaissant les schémas injectés. Sur un vrai FEC, la précision serait plus faible, et un fraudeur averti peut éviter des règles connues. D'où les étapes suivantes : la loi de Benford et le machine learning non supervisé, qui ne partent pas d'une liste de fraudes connues.
 
 ## 🛠️ Outils
 
